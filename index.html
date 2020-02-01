@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sort a HTML Table Alphabetically</title>
+<style>
+table {
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+</style>
+</head>
+<body>
+
+
+<p>List:</p>
+<p id="text" style="display:none">1 lb. Ground Beef, 1 Small Onion, Fresh Garlic, Cinnamon, Cayenne, Chili Powder, Dried Basil, Ground Allspice, Cumin, Salt, Worcestershire Sauce, Vinegar, Chocolate Chips, Tomato Sauce, Spaghetti, Cheddar</p>
+
+<p id="text1" style="display:none">Flank Steak, Fresh Garlic, Fresh Ginger, Soy Sauce, Coriander, Cumin, Tumeric, Cayenne, Montreal Steak Seasoning, 1 Lemon, Olive Oil</p>
+
+<p id="text2" style="display:none">l.5 lb. Ground Sirloin, Breadcrumbs, Egg, 1 Small Onion, Salt, Pepper, Garlic Powder, Parsely Flakes</p>
+
+<p id="text3" style="display:none">Olive Oil,4 oz. Panchetta, Fresh Sage, 1 Butternut Sqaush, 1 Small Onion, Fresh Garlic, Chicken Broth, Fettucine, Parmesaen</p>
+
+<p><button onclick="sortTable()">Sort By Rating</button></p>
+
+<table id="myTable">
+  <tr>
+    <th>Rating</th>
+    <th>Recipe</th>
+    <th>Ingredients</th>
+    <th>Make?</th>
+
+  </tr>
+  <tr>
+  	<td>A</td>
+    <td>Skyline Chili</td>
+    <td>1 lb. Ground Beef, 1 Small Onion, Fresh Garlic, Cinnamon, Cayenne, Chili Powder, Dried Basil, Ground Allspice, Cumin, Salt, Worcestershire Sauce, Vinegar, Chocolate Chips, Tomato Sauce, Spaghetti, Cheddar </td>
+    <td>
+    	<input type="checkbox" id="myCheck"  onclick="Chili()">
+    </td>
+  </tr>
+  
+  <tr>
+  	<td>B</td>
+    <td>Flank Steak</td>
+    <td>Flank Steak, Fresh Garlic, Fresh Ginger, Soy Sauce, Coriander, Cumin, Tumeric, Cayenne, Montreal Steak Seasoning, 1 Lemon, Olive Oil</td>
+    <td>
+    <input type="checkbox" id="myCheck1"  onclick="flank()">
+    </td>
+  </tr>
+  
+  <tr>
+  	<td>C</td>
+    <td>Meatloaf</td>
+    <td>l.5 lb. Ground Sirloin, Breadcrumbs, Egg, 1 Small Onion, Salt, Pepper, Garlic Powder, Parsely Flakes</td>
+    <td>
+    <input type="checkbox" id="myCheck1"  onclick="loaf()">
+    </td>
+  </tr>
+  
+  <tr>
+  	<td>B</td>
+    <td>Sqaush Pasta</td>
+    <td>Olive Oil,4 oz. Panchetta, Fresh Sage, 1 Butternut Sqaush, 1 Small Onion, Fresh Garlic, Chicken Broth, Fettucine, Parmesaen</td>
+    <td>
+    <input type="checkbox" id="myCheck3"  onclick="carbo()">
+    </td>
+  </tr>
+  
+</table>
+
+
+
+//Sorting Script
+
+<script>
+function sortTable() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[0];
+      y = rows[i + 1].getElementsByTagName("TD")[0];
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+</script>
+
+
+//Checkbox Scripts
+
+<script>
+function Chili() {
+  var checkBox = document.getElementById("myCheck");
+  var text = document.getElementById("text");
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+     text.style.display = "none";
+  }
+}
+</script>
+
+<script>
+function flank() {
+  var checkBox = document.getElementById("myCheck1");
+  var text = document.getElementById("text1");
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+     text.style.display = "none";
+  }
+}
+</script>
+
+<script>
+function Chili() {
+  var checkBox = document.getElementById("myCheck");
+  var text = document.getElementById("text");
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+     text.style.display = "none";
+  }
+}
+</script>
+
+<script>
+function loaf() {
+  var checkBox = document.getElementById("myCheck2");
+  var text = document.getElementById("text2");
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+     text.style.display = "none";
+  }
+}
+</script>
+
+<script>
+function carbo() {
+  var checkBox = document.getElementById("myCheck4");
+  var text = document.getElementById("text4");
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+     text.style.display = "none";
+  }
+}
+</script>
+
+
+
+</body>
+</html>
